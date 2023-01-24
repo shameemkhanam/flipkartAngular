@@ -1,0 +1,16 @@
+.main_container{
+  background-color: rgb(215, 213, 213);
+  width: 1470px;
+}
+.prod_container{
+  width: 800px;
+}
+.top-caption{
+  position: relative;
+  top: -136px;
+  left: 250px;
+  width: 400px;
+}
+/* .picsum-img-wrapper .carousel-control-next-icon .carousel-control-prev-icon{
+  background-color: black;
+} */

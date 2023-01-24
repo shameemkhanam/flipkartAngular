@@ -8,7 +8,15 @@ import { HeaderComponent } from './myComponents/header/header.component';
 import { FooterComponent } from './myComponents/footer/footer.component';
 import { CartComponent } from './myComponents/cart/cart.component';
 import { ProductsComponent } from './myComponents/products/products.component';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './myComponents/home/home.component';
+import { SellerComponent } from './myComponents/seller/seller.component';
+import { CardTopComponent } from './myComponents/card-top/card-top.component';
+import { PageNotFoundComponent } from './myComponents/page-not-found/page-not-found.component'
+import { FormsModule } from '@angular/forms';
+import { SliderComponent } from './myComponents/slider/slider.component';
+import { TopProductsComponent } from './myComponents/top-products/top-products.component';
+import { SearchComponent } from './myComponents/search/search.component';
 
 @NgModule({
   declarations: [
@@ -16,13 +24,21 @@ import { HttpClientModule } from '@angular/common/http'
     HeaderComponent,
     FooterComponent,
     CartComponent,
-    ProductsComponent
+    ProductsComponent,
+    HomeComponent,
+    SellerComponent,
+    CardTopComponent,
+    PageNotFoundComponent,
+    SliderComponent,
+    TopProductsComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { product } from 'src/app/model/product';
 import { ApiService } from 'src/app/myServices/api.service';
 import { CartService } from 'src/app/myServices/cart.service';
 
@@ -8,7 +9,8 @@ import { CartService } from 'src/app/myServices/cart.service';
   styleUrls: ['./products.component.css'],
 })
 export class ProductsComponent implements OnInit {
-  public productList: any;
+
+  productList: undefined | product[];
 
   constructor(private apiService: ApiService, private cartService: CartService) {}
 
@@ -21,6 +23,13 @@ export class ProductsComponent implements OnInit {
       });
     });
   }
+
+  // ngOnInit(): void {
+  //   this.apiService.getProducts().subscribe((res) => {
+  //     // console.log(res);
+  //     this.productList = res;      
+  //   });
+  // }
 
   addtocart(productItem:any) {
     this.cartService.addToCart(productItem);

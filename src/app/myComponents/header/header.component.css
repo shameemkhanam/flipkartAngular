@@ -14,10 +14,54 @@
   right: 140%;
   /* top: 37%; */
   color: #0d6efd;
+  cursor: pointer;
 }
 .badge {
-  position: absolute;
+  /* position: absolute;
   right: 9%;
-  top: 10%;
+  top: 10%; */
+  position: relative;
+  right: 52px;
+  top: -15px;
   border: 1px solid white;
+}
+.loginBtn {
+  width: 120px;
+  /* margin-right: 290px; */
+  height: 36px;
+  border: none;
+  border-radius: 2px;
+  color: #0d6efd;
+  font-weight: 700;
+}
+li {
+  text-align: right;
+  margin-right: 30px;
+}
+.suggested_result {
+  position: absolute;
+  display: list-item !important;
+  z-index: 10;
+  background-color: white;
+  width: 550px;
+  border: 1px solid #ddd;
+  top: 50px;
+  left: 217px;
+  list-style: none;
+  
+}
+.suggested_result li{
+  /* list-style: none; */
+  text-align: left;
+  /* border: 1px solid #ddd; */
+  padding: 5px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.suggested_result li:hover{
+  background-color: rgb(225, 235, 245);
+}
+.suggested_result li a{
+  cursor: pointer;
+  
 }

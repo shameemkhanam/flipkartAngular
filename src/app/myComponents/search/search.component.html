@@ -1,0 +1,27 @@
+<div class="container-fluid bg-light">
+<div class="container">
+  <div class="container-fluid bg-light">
+    <div class="container ">
+      <div class="row">
+        <ng-container *ngFor="let item of searchResult">
+          <div class="card col-md-3">
+            <img src="{{item.image}}">
+            <h5 style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100ch;">{{item.title}}</h5>
+            <p style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100ch;">{{item.description}}</p>
+            <p><strong>Price: </strong>${{item.price}}</p>
+            <button class="btn btn-warning mb-2">View Details</button>
+            <button class="btn btn-primary" >Add to Cart</button>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <div class="container noResults" *ngIf="noSearchResult">
+    <h1 class="text-center"><span class="text-danger">No Results Found for</span>   {{searchedQuery}}</h1>
+  </div>
+
+
+</div>
