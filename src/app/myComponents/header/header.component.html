@@ -1,5 +1,5 @@
 <header>
-  <nav class="navbar navbar-expand-lg bg-body-tertiary bg-primary shadow-sm">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary primary shadow-sm">
     <div class="container">
       <div class="d-flex flex-column">
         <a class="navbar-brand m-0 p-0" routerLink="home"><img src="../../../assets/myImages/Flipkart.png" height="23px"></a>
@@ -12,34 +12,46 @@
         <i class="fa-solid fa-magnifying-glass" (click)="submitSearch(searchInput.value)"></i>
       </span>
       <ul class="suggested_result shadow" *ngIf="searchResult">
-        <li *ngFor="let item of searchResult"><a>{{item.title}}</a></li>
+        <li *ngFor="let item of searchResult">
+          <a (mousedown)="redirectToDetails(item.id)">{{item.title}}</a>
+        </li>
       </ul>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        
-        <ul class="navbar-nav  mb-2 mb-lg-0 d-flex align-items-center justify-content-end">
-          <li class="nav-item" >
-            <a class="nav-link active text-light fw-bold" aria-current="page" href="#"><button class="loginBtn">Login</button></a>
+      <div [ngSwitch]="menuType" class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul *ngSwitchCase="'default'" class="navbar-nav  mb-2 mb-lg-0 d-flex align-items-center justify-content-end">
+          <li class="nav-item">
+            <a class="nav-link active text-light fw-bold" aria-current="page" routerLink="user-auth"><button class="loginBtn">Login/Signup</button></a>
           </li>
-          <li class="nav-item" >
-            <a class="nav-link active text-light fw-bold" aria-current="page" routerLink="seller" >Become a Seller</a>
+          <li class="nav-item">
+            <a class="nav-link active text-light fw-bold" aria-current="page" routerLink="seller">Become a Seller</a>
           </li>
-          <li class="nav-item" >
+          <li class="nav-item">
             <a class="nav-link active text-light fw-bold" aria-current="page" href="#">Home</a>
           </li>
-          <li class="nav-item ms-5" >
-            <a class="nav-link active text-light fw-bold" aria-current="page" routerLink="cart"><i class="fa-solid fa-cart-shopping me-2"></i>Cart<div class="badge rounded-pill text-bg-danger"><span style="font-size :'14px'">{{totalItems}}</span></div></a>
+          <li class="nav-item ms-5">
+            <a class="nav-link active text-light fw-bold" aria-current="page" routerLink="cart"><i class="fa-solid fa-cart-shopping me-2"></i>Cart<div class="badge rounded-pill text-bg-danger"><span style="font-size :'14px'">{{cartItems}}</span></div></a>
+          </li>
+        </ul>
+        <ul *ngSwitchCase="'user'" class="navbar-nav  mb-2 mb-lg-0 d-flex align-items-center justify-content-end">
+          <li class="nav-item">
+            <a class="nav-link active text-light fw-bold" aria-current="page" routerLink="user-auth"><button class="loginBtn" (click)="userLogout()">Logout</button></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active text-light fw-bold" aria-current="page" routerLink="seller">Seller</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active text-light fw-bold" aria-current="page" routerLink="seller">{{username | titlecase}}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active text-light fw-bold" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item ms-5">
+            <a class="nav-link active text-light fw-bold" aria-current="page" routerLink="cart"><i class="fa-solid fa-cart-shopping me-2"></i>Cart<div class="badge rounded-pill text-bg-danger"><span style="font-size :'14px'">{{cartItems}}</span></div></a>
           </li>
         </ul>
       </div>
-      <!-- <div>
-        <button routerLink ="cart" class="btn btn-primary"><i class="fa-solid fa-cart-shopping me-2"></i>Cart</button>
-        <div class="badge rounded-pill text-bg-danger"><span style="font-size :'14px'">{{totalItems}}</span></div>
-        <span class="text-light fw-bold"><i class="fa-solid fa-cart-shopping me-2"></i>Cart</span> -->
-        
-      
     </div>
   </nav>
 </header>

@@ -1,0 +1,26 @@
+.product_image{
+  object-fit: contain;
+  width: 380px;
+  height: 417px;
+}
+.product_details{
+  margin: 50px auto;
+}
+.quantity_group{
+  margin-top: 20px;
+  
+}
+.quantity_group button{
+  padding: 10px;
+  width: 40px;
+  
+}
+.quantity_group input{
+  padding: 10px;
+  width: 50px;
+  
+}
+.details{
+  line-height: 30px;
+  
+}

@@ -17,6 +17,8 @@ import { FormsModule } from '@angular/forms';
 import { SliderComponent } from './myComponents/slider/slider.component';
 import { TopProductsComponent } from './myComponents/top-products/top-products.component';
 import { SearchComponent } from './myComponents/search/search.component';
+import { ProductDetailsComponent } from './myComponents/product-details/product-details.component';
+import { UserAuthComponent } from './myComponents/user-auth/user-auth.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,10 @@ import { SearchComponent } from './myComponents/search/search.component';
     PageNotFoundComponent,
     SliderComponent,
     TopProductsComponent,
-    SearchComponent
+    SearchComponent,
+    ProductDetailsComponent,
+    UserAuthComponent
+    
   ],
   imports: [
     BrowserModule,
