@@ -70,9 +70,9 @@ export class UserAuthComponent implements OnInit {
           if (cartDataList.length === index + 1) {
             localStorage.removeItem('localCart');
           }
-        },500);
+        }, 500);
         
-      })
+      });
     }
 
     setTimeout(() => {

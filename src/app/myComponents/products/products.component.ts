@@ -16,22 +16,22 @@ export class ProductsComponent implements OnInit {
     private cartService: CartService
   ) {}
 
-  ngOnInit() {
-    this.apiService.getProducts().subscribe((res) => {
-      this.productList = res;
-
-      this.productList.forEach((a: any) => {
-        Object.assign(a, { quantity: 1, total: a.price });
-      });
-    });
-  }
-
-  // ngOnInit(): void {
+  // ngOnInit() {
   //   this.apiService.getProducts().subscribe((res) => {
-  //     // console.log(res);
   //     this.productList = res;
+
+  //     this.productList.forEach((a: any) => {
+  //       Object.assign(a, { quantity: 1, total: a.price });
+  //     });
   //   });
   // }
+
+  ngOnInit(): void {
+    this.apiService.getProducts().subscribe((res) => {
+      // console.log(res);
+      this.productList = res;
+    });
+  }
 
   // addtocart(productItem: any) {
   //   this.cartService.addToCart(productItem);

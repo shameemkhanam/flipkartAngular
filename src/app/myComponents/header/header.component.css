@@ -5,7 +5,7 @@
   top: -11px;
 }
 .form-control {
-  width: 550px;
+  width: 500px;
   border-radius: 2px;
   margin-left: 7px;
 }
@@ -32,7 +32,7 @@
   height: 36px;
   border: none;
   border-radius: 2px;
-  color: #0d6efd;
+  /* color: #0d6efd; */
   font-weight: 700;
 }
 li {
@@ -66,3 +66,10 @@ li {
   cursor: pointer;
   
 }
+/* header nav{
+  position: fixed;
+  z-index: 12;
+  width: 100%;
+  top: 0%;
+  padding: 10px;
+} */

@@ -1,6 +1,8 @@
-<div class="content theme-blue bg-light">
-  <app-header  id="theme-blue"></app-header>
-  
+<div>
+  <app-header></app-header>
+  <div style="margin-top: 70px;">
+    <button (click)="toggleDarkTheme()" class="btn-small">Toggle theme</button>
+  </div>
   <router-outlet></router-outlet>
   <div class="footer_container">
     <app-footer></app-footer>

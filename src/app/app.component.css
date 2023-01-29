@@ -7,3 +7,12 @@ app-footer {
   margin: 0 auto;
   text-align: center;
 }
+ .btn-small{
+  width: 200px;
+  height: 40px;
+  margin-top: 10px ;
+  margin-bottom: 10px ;
+  float: right;
+
+ }
+ 
