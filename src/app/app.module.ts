@@ -8,7 +8,7 @@ import { HeaderComponent } from './myComponents/header/header.component';
 import { FooterComponent } from './myComponents/footer/footer.component';
 import { CartComponent } from './myComponents/cart/cart.component';
 import { ProductsComponent } from './myComponents/products/products.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HomeComponent } from './myComponents/home/home.component';
 import { SellerComponent } from './myComponents/seller/seller.component';
 import { CardTopComponent } from './myComponents/card-top/card-top.component';
@@ -19,6 +19,8 @@ import { TopProductsComponent } from './myComponents/top-products/top-products.c
 import { SearchComponent } from './myComponents/search/search.component';
 import { ProductDetailsComponent } from './myComponents/product-details/product-details.component';
 import { UserAuthComponent } from './myComponents/user-auth/user-auth.component';
+import { MyHeaderInterceptor } from './myServices/my-header.interceptor';
+import { CartPageComponent } from './myComponents/cart-page/cart-page.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import { UserAuthComponent } from './myComponents/user-auth/user-auth.component'
     TopProductsComponent,
     SearchComponent,
     ProductDetailsComponent,
-    UserAuthComponent
+    UserAuthComponent,
+    CartPageComponent
     
   ],
   imports: [
@@ -45,7 +48,13 @@ import { UserAuthComponent } from './myComponents/user-auth/user-auth.component'
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: MyHeaderInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

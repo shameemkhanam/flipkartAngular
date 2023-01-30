@@ -41,7 +41,7 @@ body {
   background: var(--bkg-color);
 }
 
-h1,h2,h3,
+h1,h2,h3,span,
 p {
   color: var(--text-color);
 }

@@ -7,6 +7,7 @@ export interface product {
   image: string;
   rating: object;
   quantity: undefined | number;
+  productId: undefined | number;
 }
 
 export interface signup {
@@ -30,4 +31,12 @@ export interface cart {
   quantity: undefined | number;
   userId: number;
   productId: number;
+}
+
+export interface priceSummary{
+  price: number,
+  discount: number,
+  tax: number,
+  delivery: number,
+  total: number
 }
