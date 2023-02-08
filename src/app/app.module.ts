@@ -21,6 +21,14 @@ import { ProductDetailsComponent } from './myComponents/product-details/product-
 import { UserAuthComponent } from './myComponents/user-auth/user-auth.component';
 import { MyHeaderInterceptor } from './myServices/my-header.interceptor';
 import { CartPageComponent } from './myComponents/cart-page/cart-page.component';
+import {
+  SocialLoginModule,
+  SocialAuthServiceConfig,
+} from '@abacritt/angularx-social-login';
+import {
+  GoogleLoginProvider,
+  FacebookLoginProvider,
+} from '@abacritt/angularx-social-login';
 
 @NgModule({
   declarations: [
@@ -38,23 +46,40 @@ import { CartPageComponent } from './myComponents/cart-page/cart-page.component'
     SearchComponent,
     ProductDetailsComponent,
     UserAuthComponent,
-    CartPageComponent
-    
+    CartPageComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    SocialLoginModule,
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: MyHeaderInterceptor,
-      multi: true
-    }
+      multi: true,
+    },
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '463057302332-ois231temvdiq2mr0d9fl6hu8jdgf01t.apps.googleusercontent.com'
+            ),
+          },
+        ],
+        onError: (err) => {
+          console.error(err);
+        },
+      } as SocialAuthServiceConfig,
+    },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

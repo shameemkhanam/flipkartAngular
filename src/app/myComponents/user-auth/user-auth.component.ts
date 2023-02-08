@@ -1,3 +1,4 @@
+import { GoogleLoginProvider, SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 import { Component, OnInit } from '@angular/core';
 import { cart, login, product, signup } from 'src/app/model/datatypes';
 import { ApiService } from 'src/app/myServices/api.service';
@@ -13,10 +14,23 @@ export class UserAuthComponent implements OnInit {
   showLogin: boolean = true;
   authError: string = '';
 
-  constructor(private userService: UserService, private api: ApiService) {}
+  user!: SocialUser;
+
+  constructor(private userService: UserService, private api: ApiService, private authService:SocialAuthService) {}
 
   ngOnInit() {
     this.userService.userAuthReload();
+
+    this.authService.authState.subscribe((user) => {
+      this.user = user;
+    });
+  }
+
+  signInWithGoogle():any {
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+  }
+  signOut(): any{
+    this.authService.signOut();
   }
 
   signup(data: signup) {

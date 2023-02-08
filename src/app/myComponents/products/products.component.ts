@@ -10,30 +10,23 @@ import { CartService } from 'src/app/myServices/cart.service';
 })
 export class ProductsComponent implements OnInit {
   productList: undefined | product[];
+  filterCategory: undefined | product[];
 
   constructor(
     private apiService: ApiService,
     private cartService: CartService
-  ) {}
+  ) {}  
 
-  // ngOnInit() {
-  //   this.apiService.getProducts().subscribe((res) => {
-  //     this.productList = res;
+  ngOnInit(): void {   
 
-  //     this.productList.forEach((a: any) => {
-  //       Object.assign(a, { quantity: 1, total: a.price });
-  //     });
-  //   });
-  // }
-
-  ngOnInit(): void {
-    this.apiService.getProducts().subscribe((res) => {
-      // console.log(res);
-      this.productList = res;
-    });
+    
   }
 
-  // addtocart(productItem: any) {
-  //   this.cartService.addToCart(productItem);
-  // }
+  filter(categorypro: product[]) {
+    // console.log(categorypro);
+    this.filterCategory = categorypro;
+    
+  }
+
+  
 }

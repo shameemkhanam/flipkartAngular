@@ -8,7 +8,7 @@ import { ApiService } from 'src/app/myServices/api.service';
   styleUrls: ['./cart-page.component.css'],
 })
 export class CartPageComponent implements OnInit {
-  cartData: cart[]  =[];
+  cartData: cart[] = [];
   priceSummary: priceSummary = {
     price: 0,
     discount: 0,
@@ -20,6 +20,18 @@ export class CartPageComponent implements OnInit {
   constructor(private api: ApiService) {}
 
   ngOnInit(): void {
+    this.loadCartDetails();
+  }
+
+  removeFromCart(cartId:number|undefined) {
+    cartId && this.cartData &&
+      this.api.removeFromCart(cartId).subscribe((result) => {
+        this.loadCartDetails();
+        }
+      );
+  }
+
+  loadCartDetails() {
     this.api.currentCart().subscribe((result) => {
       // console.log(result);
       this.cartData = result;
@@ -37,7 +49,7 @@ export class CartPageComponent implements OnInit {
       this.priceSummary.total =
         price + price / 10 + 100 - this.priceSummary.tax;
       this.priceSummary.total = +this.priceSummary.total.toFixed(2);
-      console.log(this.priceSummary);
+      // console.log(this.priceSummary);
     });
   }
 }

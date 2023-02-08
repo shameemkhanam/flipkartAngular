@@ -1,16 +1,21 @@
 import { HttpClient } from '@angular/common/http';
-import { EventEmitter, Injectable } from '@angular/core';
-import { map } from 'rxjs';
+import { EventEmitter, Injectable, OnInit } from '@angular/core';
+import { BehaviorSubject, map } from 'rxjs';
 import { cart, product } from '../model/datatypes';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ApiService {
+export class ApiService implements OnInit {
+  
 
   cartData = new EventEmitter<product[] | []>();
 
   constructor(private http: HttpClient) {}
+
+  ngOnInit(): void {
+    
+  }
 
   getProducts() {
     return this.http.get<product[]>('http://localhost:3000/products').pipe(
@@ -19,6 +24,8 @@ export class ApiService {
       })
     );
   }
+
+  
 
   popularProducts() {
     return this.http.get<product[]>('http://localhost:3000/products?_limit=3');
@@ -34,14 +41,13 @@ export class ApiService {
     return this.http.get<product>(`http://localhost:3000/products/${id}`);
   }
 
-  localAddToCart(data:product) {
+  localAddToCart(data: product) {
     let cartData = [];
     let localCart = localStorage.getItem('localCart');
     if (!localCart) {
       localStorage.setItem('localCart', JSON.stringify([data]));
       this.cartData.emit([data]);
-    }
-    else {
+    } else {
       // console.log('else');
       cartData = JSON.parse(localCart);
       cartData.push(data);
@@ -50,7 +56,7 @@ export class ApiService {
     this.cartData.emit(cartData);
   }
 
-  removeItemFromCart(productId:number) {
+  removeItemFromCart(productId: number) {
     let cartData = localStorage.getItem('localCart');
     if (cartData) {
       let items: product[] = JSON.parse(cartData);
@@ -67,10 +73,13 @@ export class ApiService {
   }
 
   getCartList(userId: number) {
-    return this.http.get<product[]>('http://localhost:3000/cart?userId=' + userId,
-      { observe: 'response' }).subscribe((result) => {
+    return this.http
+      .get<product[]>('http://localhost:3000/cart?userId=' + userId, {
+        observe: 'response',
+      })
+      .subscribe((result) => {
         console.log(result);
-        
+
         if (result && result.body) {
           this.cartData.emit(result.body);
         }
@@ -84,6 +93,8 @@ export class ApiService {
   currentCart() {
     let userStore = localStorage.getItem('user');
     let userData = userStore && JSON.parse(userStore);
-    return this.http.get<cart[]>('http://localhost:3000/cart?userId='+userData.id);
+    return this.http.get<cart[]>(
+      'http://localhost:3000/cart?userId=' + userData.id
+    );
   }
 }

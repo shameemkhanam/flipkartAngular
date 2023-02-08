@@ -1,8 +1,8 @@
-<app-card-top></app-card-top>
+<app-card-top (customEvent)="filter($event)"></app-card-top>
 <div class="container-fluid ">
   <div class="container ">
     <div class="row">
-      <ng-container *ngFor="let product of productList">
+      <ng-container *ngFor="let product of filterCategory">
         <div class="card col-md-3">
           <a routerLink="/details/{{product.id}}">
             <img src="{{product.image}}">

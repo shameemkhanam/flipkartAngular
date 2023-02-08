@@ -102,6 +102,7 @@ export class ProductDetailsComponent implements OnInit {
   removeFromCart(productId: number) {
     if (!localStorage.getItem('user')) {
       this.api.removeItemFromCart(productId);
+      this.removeCart = false;
     } else {
       // console.log(this.cartData);
       let user = localStorage.getItem('user');

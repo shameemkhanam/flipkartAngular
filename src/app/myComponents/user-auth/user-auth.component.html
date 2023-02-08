@@ -70,6 +70,15 @@
           <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
             <button [disabled]="userLogin.invalid" class="btn btn-primary btn-lg">Login</button>
           </div>
+
+          <div class="text-center mb-5">
+            <!-- <a class="btn  btn-warning "><i class="fa fa-google me-2"></i>Login with Google</a> -->
+            <button class="btn btn-social-icon btn-google border" (click)="signInWithGoogle()">
+              <span class="fa fa-google me-2 text-danger"></span>Login with Google
+            </button>
+          </div>
+
+
           <p>Want to create an account? <a (click)="openSignup()">Click Here</a></p>
         </form>
       </div>
